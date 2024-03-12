@@ -14,7 +14,7 @@
                 <img src="images/logo.jfif" alt="logo" class="logo">
                 <h1 class="loyerlogoh1">LOYER.ma</h1>
             </div>
-            <div class="div4"><img src="images/bakcicon.png" alt="back" class="backlogo"></div>
+            <div class="div4"><a href="main.php"><img src="images/bakcicon.png" alt="back" class="backlogo"></a></div>
         </main>
         <form action="logincheck.php" method="post">
             <h2>Se connecter</h2>

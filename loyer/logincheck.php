@@ -21,8 +21,8 @@ if ($result->num_rows > 0) {
     $_SESSION["id_client"] = $row["id"];
 
     $pass = $row["password_c"];
-    if ($pass == $password) {
-        header('location:mainpage.php');
+    if ($pass == $password ) {
+        header('location:main.php');
 
     } else {
         header('location:loginpage.php');

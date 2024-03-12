@@ -1,6 +1,6 @@
 <?php
 session_start();
-// unset($_SESSION['myofset2']);
+
 
 require_once('./conndb.php');
 $sql = "SELECT id,title,idC,prix,ville FROM publication limit 12";
@@ -13,15 +13,34 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>loyer.ma</title>
     <link rel="stylesheet" href="style/style2.css">
+    <style>
+    <?php require_once('./the2pages/style2.css'); ?>
+    
+    
+</style>
+
 </head>
 <body>      
         <?php
+        if (isset($_SESSION["id_client"])) {
+
+            $theclid = $_SESSION["id_client"];
+            
+            require_once('./the2pages/page2.php'); 
+            
+
+        }else{
             require_once('./the2pages/page1.php');
+        }
+            
+            
+            
         ?>
          <article id="artt">
             <?php 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    echo "<a href='propage.php?id=".$row['id']."' class='thecon'>";
                     echo "<div class='contener'>";
                     
                     $imgurl = $row["id"];
@@ -39,9 +58,13 @@ $result = $conn->query($sql);
                     echo "<h2>". $row["title"]."</h2>";
                     echo "<h4><span class='villetext'>Ville : </span>".$row["ville"]."</h4>";
                     echo "<h4><span class='villetext'>Prix : </span>".$row["prix"]."</h4>";
+                    // echo "<a href='propage.php?id=".$row['id']."' class='thecon'>More </a>";
+
 
                     echo "</div>";
                     echo "</div>";
+                    echo '</a>';
+                    
             
             
             
@@ -78,6 +101,15 @@ $result = $conn->query($sql);
                 
                 
             });
+            function desco(){
+                $.ajax({
+            type: "POST",
+            url: "unset_session.php", 
+            data: { variable_name: "id_client" }
+        
+            });
+             }
+            //  const theart = document.getElementById('artc')
          </script>
          
 </body>

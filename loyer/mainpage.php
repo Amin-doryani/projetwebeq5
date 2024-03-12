@@ -6,6 +6,4 @@ if (isset($_SESSION["logedwith"])) {
     echo "welcome ".$email;
     echo "<br><a href='publi.php'>add pub</a>";
 }
-
-
 ?>

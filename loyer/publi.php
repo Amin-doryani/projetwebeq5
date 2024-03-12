@@ -21,11 +21,11 @@ if (isset($_SESSION["id_client"])) {
             <form action="#" method="post" enctype="multipart/form-data" class="form1" id="form2"></form>
     
     
-                <h1> pub information</h1>
-                <h3>title</h3>
+                <h1> Publier une annonce</h1>
+                <h3>Titre</h3>
                 <input type="text" name="titel" id="titel" class="simpleinput" placeholder="title" form="form1">
     
-                <h3>description</h3>
+                <h3>Description</h3>
                 <textarea name="descr" id="descr" cols="30" rows="10" required form="form1"></textarea>
                 <br>
                
@@ -79,9 +79,9 @@ if (isset($_SESSION["id_client"])) {
                </div>
        
                 
-                <h3>city</h3>
+                <h3>Ville</h3>
                 <input type="text" name="city" id="city" class="simpleinput" placeholder="city" form="form1">
-                <h3> address</h3>
+                <h3> Adresse</h3>
                 <input type="text" name="addr" id="addr" class="simpleinput" onfocus="" placeholder="address" form="form1">
                 <h3>Meubles</h3>
                 

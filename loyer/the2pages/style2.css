@@ -1,12 +1,7 @@
-
-<style>
-    *{
+*{
     padding: 0px ;
     margin: 0px ;
     box-sizing: border-box;
-}
-body{
-    height:90vh;
 }
 .logoimage{
     width: 50px;
@@ -44,7 +39,7 @@ main{
 }
 a:hover{
     color: #0071BD;
-   border-bottom: 2px solid #0071BD;
+   border-bottom: 1px solid #0071BD;
    
 }
 .logoname{
@@ -53,7 +48,7 @@ a:hover{
 header{
     width: 100%;
     height: 90%;
-    border: 1px solid black;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,17 +58,18 @@ header{
     background-size: cover;
     
     
+    
 }
 
 .hederh1{
-    width: 40%;
+    width: 35%;
     text-align: center;
     margin-bottom: 25px;
     
     color: white;
 }
 .hederbtn{
-    width: 30%;
+    width: 50%;
     height: max-content;
     
     display: flex;
@@ -85,7 +81,7 @@ header{
     color: white;
     border: 2px solid #0071BD;
     font-size: 1.5em;
-    width: 200px;
+    width: 300px;
     padding: 12px 0px;
     text-align: center;
     border-radius: 5px;
@@ -103,7 +99,7 @@ header{
     width: 100%;
     height: 80px;
     background-color:#0071BD ;
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
 .resdiv form{
     width: 100%;
@@ -130,38 +126,48 @@ header{
     border-radius: 2px;
 
 }
-</style>
+.profileimg{
+    width: 50px;
+    height: 50px;
 
-<main>
-        <div class="divofmain1">
-            <img src="./images/logo.jfif" alt="logo" class="logoimage">
+}
+#publierbtn{
+    /* border: 0px ; */
+    background-color:#0071BD ;
+    color: white;
+    padding: 5px 10px;
+}
+#ourprofilediv{
+    width: 210px;
+    background-color: white;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+    font-size: 1.1em;
+    font-weight: 200;
+    right: 10px;
+  
+    padding: 10px 10px;
+    display: none;
+    transition: 1s;
+    border-radius: 1px;
 
-            <h1 class="logoname">LOYER.ma</h1>
-        </div>
-        <div class="divofmain2">
-            <a href="#">HOME</a>
-            <a href="#">ABOUT US</a>
-            <a href="#">CONTACT</a>
-            <a href="#">POLICY</a>
-        </div>
-    </main>
-    <header>
-        <h1 class="hederh1">Bienvenue sur loyer.ma 
-            Le meilleur site web pour loyer 
-           dans le maroc</h1>
-        <div class="hederbtn">
-            <a href="loginpage.php">Se Connecter</a>
-            <a href="#">Creer un compte</a>
-        </div>
-    </header>
-    <div class="resdiv">
-        <form action="#">
-            <input type="text" name="ville" id="ville" placeholder="ville">
-            <input type="number" name="minval" id="minval" placeholder="min prix">
-            <input type="number" name="maxval" id="maxval"  placeholder="max prix">
-            <a href="#"></a>
-            
 
-        </form>
-</div>
+}
+#ourprofilediv a{
+    color: rgba(40, 39, 39, 0.801);
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
     
+
+}
+#ourprofilediv a:hover{
+    color: black;
+    border: 0px;
+
+}
+
+
+
