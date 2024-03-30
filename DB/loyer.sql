@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 18 fév. 2024 à 21:46
+-- Généré le : sam. 30 mars 2024 à 18:44
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -42,8 +42,43 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `nom`, `prenom`, `email_c`, `phone`, `ville`, `password_c`) VALUES
-(2, 'ayman', 'ayman', 'ayman@gmail.com', '0612345678', 'fes', 'ayman'),
-(3, 'achraf', 'dawdi', 'achraf@gmail.com', '0612121212', 'fes', 'achraf');
+(2, 'ayman', 'ayman', 'ayman@gmail.com', '612345678', 'fes', 'ayman123'),
+(3, 'ziko', 'therawi', 'achraf@gmail.com', '612121212', 'fes', 'achraf'),
+(4, 'hakimi', 'achraf', 'user@loyer.ma', '1840883', 'fes', 'admin'),
+(8, 'achraf', 'rif', 'achrafrif@gmail.com', '40405050', 'fes', 'achrafrif');
+
+--
+-- Déclencheurs `client`
+--
+DELIMITER $$
+CREATE TRIGGER `ajouter_client_a_image` AFTER INSERT ON `client` FOR EACH ROW BEGIN
+    INSERT INTO clientimg (url, idc, client_id)
+    VALUES (' clientimages/profile.png', NEW.id, NEW.id);
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `clientimg`
+--
+
+CREATE TABLE `clientimg` (
+  `id` int(11) NOT NULL,
+  `idc` int(11) NOT NULL,
+  `url` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `clientimg`
+--
+
+INSERT INTO `clientimg` (`id`, `idc`, `url`) VALUES
+(1, 4, ' clientimages/66017acd589318.95610676.jpg'),
+(8, 8, 'clientimages/profile.png'),
+(9, 3, 'clientimages/profile.png'),
+(10, 2, ' clientimages/66006cebc82641.15880800.jfif');
 
 -- --------------------------------------------------------
 
@@ -73,7 +108,6 @@ INSERT INTO `img` (`id`, `id_p`, `url`) VALUES
 (30, 4, 'pubimages/65d10cb999e610.72986818.jfif'),
 (31, 5, 'pubimages/65d10d6b040a56.19636441.jfif'),
 (32, 6, 'pubimages/65d10dbaa6f164.48758058.jfif'),
-(33, 7, 'pubimages/65d10dfa62dcb1.15523409.jpg'),
 (34, 8, 'pubimages/65d10e398530a0.84679596.jpg'),
 (35, 9, 'pubimages/65d10e78bae9e8.53395661.jpg'),
 (36, 9, 'pubimages/65d10ea59e8b97.58209504.jpg'),
@@ -81,9 +115,17 @@ INSERT INTO `img` (`id`, `id_p`, `url`) VALUES
 (38, 10, 'pubimages/65d113d17cc338.07923559.jpg'),
 (39, 11, 'pubimages/65d1140bb21fb8.60333903.jfif'),
 (40, 12, 'pubimages/65d11441a3e228.18023923.jfif'),
-(41, 13, 'pubimages/65d1147f9c87b7.95897555.jfif'),
-(42, 14, 'pubimages/65d114cb9f27b3.57240960.jfif'),
-(43, 15, 'pubimages/65d11507888da6.71471681.jfif');
+(44, 16, 'pubimages/65da22d64e5fb6.96662785.png'),
+(66, 13, 'pubimages/660844ba2660e4.68851347.jpg'),
+(67, 13, 'pubimages/660844bdb0faf6.08825197.jpg'),
+(68, 13, 'pubimages/660844c6274a11.53240428.jfif'),
+(69, 13, 'pubimages/660844caa0ddd0.01365554.jpg'),
+(70, 13, 'pubimages/660844ce08f471.71150445.jpg'),
+(71, 13, 'pubimages/660844d27e2168.12990424.jfif'),
+(72, 13, 'pubimages/660844d6df1186.56855735.jfif'),
+(73, 13, 'pubimages/660844dc79fa22.52318157.jfif'),
+(74, 13, 'pubimages/660844e7ef11c8.20182631.jpg'),
+(75, 13, 'pubimages/660844f6b89f33.88489435.jfif');
 
 -- --------------------------------------------------------
 
@@ -107,13 +149,9 @@ CREATE TABLE `message` (
 CREATE TABLE `publication` (
   `id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `descr` varchar(250) NOT NULL,
+  `descr` varchar(10000) NOT NULL,
   `ville` varchar(20) NOT NULL,
   `adrs` varchar(50) NOT NULL,
-  `meubles` varchar(10) NOT NULL,
-  `leau` varchar(10) NOT NULL,
-  `elec` varchar(10) NOT NULL,
-  `wifi` varchar(10) NOT NULL,
   `prix` int(11) NOT NULL,
   `idc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -122,22 +160,36 @@ CREATE TABLE `publication` (
 -- Déchargement des données de la table `publication`
 --
 
-INSERT INTO `publication` (`id`, `title`, `descr`, `ville`, `adrs`, `meubles`, `leau`, `elec`, `wifi`, `prix`, `idc`) VALUES
-(1, 'tala yousef al hoceima', 'this is the 1st bub in our website and this is the description of it ', 'Al hoceima', 'TALA YOUSEF AL HOCEAMA', '0', '1', 'yes', 'yes', 3200, 2),
-(2, 'sidi 3abid', 'this is the 2nd pub in our website', 'Al hoceima', 'SIDI ABID AL HOCIEMA', '1', '1', 'yes', 'no', 3200, 2),
-(3, '7ay tighanimin', 'this is the 3ed pub in our website', 'fes', 'tighanimin fes 22', '1', '1', 'yes', 'yes', 4000, 2),
-(4, 'maknas, hay lala zehra', 'this is the 4th pub in our website', 'maknas', 'maknas hay lala zehra', '1', '1', 'yes', 'yes', 4100, 2),
-(5, 'tanger hay moulay rachi', 'this is the 5th pub', 'tanger', 'tanger hay lala zehra', '1', '0', 'no', 'no', 2900, 2),
-(6, 'tanger hay moulay rachi', 'this is  the 6th pub', 'tanger', 'tanger hay lala zehra', '0', '1', 'yes', 'no', 2900, 2),
-(7, 'sidi momen', 'this is the 7th pub ', 'fes', 'fes sidi momen ', '1', '1', 'yes', 'no', 1500, 2),
-(8, 'minador al hoceima', 'this is the 8th pub', 'fes', 'fes sidi momen ', '0', '1', 'yes', 'yes', 5300, 2),
-(9, 'kalabonita', 'this is the 9th pub', 'al hoceima', 'kalabonita al hoceima', '1', '1', 'yes', 'yes', 8000, 2),
-(10, 'sidi momen', 'this is the 10th pub', 'fes', 'fes 1000 tanger', '1', '1', 'yes', 'no', 3000, 2),
-(11, 'our 11 pub', 'this is the 11th pub', 'tanger', 'tanger hay lala zehra', '0', '1', 'yes', 'yes', 7200, 2),
-(12, '12 pub', 'our 12 pub', 'fes', 'fes', '1', '1', 'yes', 'yes', 14000, 2),
-(13, 'molay ya39oub fes', 'this is  the 13th pub', 'fes', 'fes molay ya39ob', '1', '1', 'yes', 'yes', 5300, 2),
-(14, 'pub 15', 'this is the 15th pub', 'tanger', 'tanger', '0', '0', 'no', 'no', 6000, 2),
-(15, 'pub 16', 'pub 16th', 'taza', 'taza', '0', '0', 'yes', 'yes', 12000, 2);
+INSERT INTO `publication` (`id`, `title`, `descr`, `ville`, `adrs`, `prix`, `idc`) VALUES
+(1, 'tala yousef al hoceima', 'this is the 1st bub in our website and this is the description of it ', 'Al hoceima', 'TALA YOUSEF AL HOCEAMA', 3200, 2),
+(2, 'sidi 3abid', 'this is the 2nd pub in our website', 'Al hoceima', 'SIDI ABID AL HOCIEMA', 3200, 2),
+(3, '7ay tighanimin', 'this is the 3ed pub in our website', 'fes', 'tighanimin fes 22', 4000, 2),
+(4, 'maknas, hay lala zehra', 'this is the 4th pub in our website', 'maknas', 'maknas hay lala zehra', 4100, 2),
+(5, 'tanger hay moulay rachi', 'this is the 5th pub', 'tanger', 'tanger hay lala zehra', 2900, 2),
+(9, 'kalabonita', 'this is the 9th pub', 'al hoceima', 'kalabonita al hoceima', 8000, 2),
+(10, 'sidi momen', 'this is the 10th pub', 'fes', 'fes 1000 tanger', 3000, 2),
+(11, 'our 11 pub', 'this is the 11th pub', 'tanger', 'tanger hay lala zehra', 7200, 2),
+(12, '12 pub', 'our 12 pubb', 'fes', 'fes', 14000, 2),
+(13, 'Al hoceima 12 kalabonita', 'orem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quasi sint fuga tenetur, deleniti modi aperiam eos', 'al hoceima', 'al hoceima 12 kalabonita', 3500, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `savep`
+--
+
+CREATE TABLE `savep` (
+  `id` int(11) NOT NULL,
+  `idc` int(11) NOT NULL,
+  `idp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `savep`
+--
+
+INSERT INTO `savep` (`id`, `idc`, `idp`) VALUES
+(41, 4, 17);
 
 --
 -- Index pour les tables déchargées
@@ -147,6 +199,12 @@ INSERT INTO `publication` (`id`, `title`, `descr`, `ville`, `adrs`, `meubles`, `
 -- Index pour la table `client`
 --
 ALTER TABLE `client`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `clientimg`
+--
+ALTER TABLE `clientimg`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -168,6 +226,12 @@ ALTER TABLE `publication`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `savep`
+--
+ALTER TABLE `savep`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -175,13 +239,19 @@ ALTER TABLE `publication`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `clientimg`
+--
+ALTER TABLE `clientimg`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `img`
 --
 ALTER TABLE `img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT pour la table `message`
@@ -193,7 +263,13 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT pour la table `publication`
 --
 ALTER TABLE `publication`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT pour la table `savep`
+--
+ALTER TABLE `savep`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
