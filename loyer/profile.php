@@ -5,6 +5,8 @@ if (!isset($_SESSION["id_client"])) {
 }
 $idc = $_SESSION["id_client"];
 require_once('./conndb.php');
+require_once('./gettheimgofuser.php');
+
 $sql = "SELECT nom,prenom,ville,password_c,email_c,phone FROM client where id = $idc ";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -49,7 +51,7 @@ if ($result->num_rows > 0) {
         ?>
         <div class = "divform">
         <form action="changeinfo.php" method="post" class="profile">
-            <img src="./clientimages/profile.png" alt="profile" class="profileimg2">
+            <img src="<?php echo $theimgurlp;?>" alt="profile" class="profileimg2">
             <div><h3>Prenom:</h3></div>
             <input type="text" name="name" id="name" value="<?php echo $name; ?>">
             <div><h3>Nom:</h3></div>
@@ -65,6 +67,18 @@ if ($result->num_rows > 0) {
             <button type="submit">Modifier</button>
         </form>
         </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" ></script>
+        <script>
+            function desco(){
+                $.ajax({
+                type: "POST",
+                url: "unset_session.php", 
+                data: { variable_name: "id_client" }
+        
+                        });
+                        }
+        </script>
+       
  
 </body>
 </html>

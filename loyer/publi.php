@@ -11,10 +11,31 @@ if (isset($_SESSION["id_client"])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style/style1.css">
+        <link rel="stylesheet" href="style/chatcss.css">
         <title>loyer</title>
+        <style>
+    <?php require_once('./the2pages/style2.css'); ?>
+    
+</style>
     </head>
     <body>
+    <?php 
+        if (isset($_SESSION["id_client"])) {
+
+            $theclid = $_SESSION["id_client"];
+            require_once('./pages/tt.php'); 
+            
+            
+            
+        
+        }else{
+            require_once('./pages/one.php'); 
+            
+        }
+        ?>
+        <div class="divcom">
+
+        
         
         <div class="ourform">
             <form action="insertpub.php" method="post" enctype="multipart/form-data" class="form1" id="form1"></form>
@@ -83,37 +104,13 @@ if (isset($_SESSION["id_client"])) {
                 <input type="text" name="city" id="city" class="simpleinput" placeholder="city" form="form1">
                 <h3> Adresse</h3>
                 <input type="text" name="addr" id="addr" class="simpleinput" onfocus="" placeholder="address" form="form1">
-                <h3>Meubles</h3>
                 
-                <input type="radio" name="meubles" id="meubles1" value="1" form="form1" class="rdinput">
-                <label for="meubles1">Yes</label>
-                
-        
-                <input type="radio" name="meubles" id="meubles2" value="0" form="form1" class="rdinput">
-                <label for="meubles2">No</label>
-                <h3>leau</h3>
-        
-                <input type="radio" name="leau" id="leau1" value="1" form="form1" class="rdinput">
-                <label for="leau1">Yes</label>
-                <input type="radio" name="leau" id="leau2" value="0" form="form1" class="rdinput">
-                <label for="leau2">No</label>
-        
-                <h3>Elec</h3>
-                        
-                <input type="radio" name="elec" id="elec1" value="yes" form="form1" class="rdinput">
-                <label for="elec1">Yes</label>
-                <input type="radio" name="elec" id="elec2" value="no" form="form1" class="rdinput">
-                <label for="elec2">No</label>
-                <h3>Wifi</h3>
-                <input type="radio" name="wifi" id="wifi1" value="yes" form="form1" class="rdinput">
-                <label for="wifi1">Yes</label>
-                <input type="radio" name="wifi" id="wifi2" value="no" form="form1" class="rdinput">
-                <label for="wifi2">No</label>
                 <h3>Prix</h3>
                 <input type="number" name="prix" id="prix" class="simpleinput" placeholder="prix(DH)" form="form1" class="rdinput">
                 <br>
-                <button type="submit" class="btnsub" form="form1">next</button>
+                <button type="submit" class="btnsub" form="form1">Publier</button>
           
+        </div>
         </div>
     </body>
     </html>

@@ -155,11 +155,11 @@ header{
         </div>
     </header>
     <div class="resdiv">
-        <form action="#">
-            <input type="text" name="ville" id="ville" placeholder="ville">
-            <input type="number" name="minval" id="minval" placeholder="min prix">
-            <input type="number" name="maxval" id="maxval"  placeholder="max prix">
-            <a href="#"></a>
+        <form action="search.php" method = 'Post' id="form_id" >
+            <input type="text" name="ville" id="ville" placeholder="ville" required>
+            <input type="number" name="minval" id="minval" placeholder="min prix" required>
+            <input type="number" name="maxval" id="maxval"  placeholder="max prix" required>
+            <a href="#" onclick="document.getElementById('form_id').submit();"></a>
             
 
         </form>

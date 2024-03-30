@@ -2,11 +2,16 @@
 session_start();
 require_once('./conndb.php');
 
+
 $pubid = $_GET['id'];
 
 $sql = "select * from publication where id = $pubid ";
 $sql2 = "select * from img where id_p = $pubid ";
 $sql3 = "select * from img where id_p = $pubid limit 1 ";
+
+
+
+
 
 
 $result = $conn -> query($sql);
@@ -21,6 +26,16 @@ while ($row = $result ->fetch_assoc()) {
 
 }
 $sql4 = "select * from client where id = $id_c ";
+$sql6 = "select url from clientimg where idc = $id_c ";
+$result6 = $conn->query($sql6);
+if ($result6->num_rows > 0) {
+    $row6 = $result6->fetch_assoc();
+    $theclprim = $row6["url"];
+    
+    
+}
+
+
 $result2 = $conn -> query($sql2);
 $result3 = $conn -> query($sql3);
 $row3 = $result3 ->fetch_assoc();
@@ -92,13 +107,36 @@ $row4 = $result4 -> fetch_assoc();
 
         <div class="info">
             <div class="userinfo">
-                <img class="userprofile" src="./clientimages/profile.png" alt="profileimg">
+                <img class="userprofile" src="<?php echo $theclprim; ?>" alt="profileimg">
                 <h3><?php echo $row4["nom"];?></h3>
                 <h3><?php echo $row4["prenom"];?></h3>
+                
                 <a href="#" class="usercontact">Contact</a>
                 
+                
             </div>
+            <?php
+            if (isset($_SESSION["id_client"])){
+                $sql7 = "select * from savep where idp = $pubid  and idc = $theclid ";
+                $result7 = $conn->query($sql7);
+                if ($result7->num_rows > 0) {
+                    echo '<div class="savebtndiv">';
+                    echo  '<button type="button" class="usercontact savepub" onclick="unsave()"><img class="stars" src="./images/unsave.png" alt="img"></button>';
+                    echo  '</div>';
+                }else{
+                    echo '<div class="savebtndiv">';
+                    echo  '<button type="button" class="usercontact savepub" onclick="savepro()"><img class="stars" src="./images/save.png" alt="img"></button>';
+                    echo  '</div>';
+                }
+                
+            }
+            
+            ?>
+            
+            
+
             <div class="pubinfo">
+
                 <?php 
                     
                 ?>
@@ -141,6 +179,47 @@ $row4 = $result4 -> fetch_assoc();
         
                 });
                 }
+        function savepro(){
+                <?php
+            
+                echo "let theclid = " . json_encode($theclid) . ";";
+                echo "let pubid = " . json_encode($pubid) . ";";
+                ?>
+                $.ajax({
+                type: "POST",
+                url: "savepro.php", 
+                data: { idc: theclid ,idp : pubid },
+                success: function(response) {
+                if (response.trim() === "added") {
+                    
+                    document.querySelector('.stars').src = "./images/unsave.png";
+                    document.querySelector('.savepub').setAttribute("onclick", "unsave()");
+                }
+            }
+        
+                });
+                }
+                function unsave(){
+                <?php
+            
+                echo "let theclid = " . json_encode($theclid) . ";";
+                echo "let pubid = " . json_encode($pubid) . ";";
+                ?>
+                $.ajax({
+                type: "POST",
+                url: "unsavepro.php", 
+                data: { idc: theclid ,idp : pubid },
+                success: function(response) {
+                if (response.trim() === "added") {
+                    
+                    document.querySelector('.stars').src = "./images/save.png";
+                    document.querySelector('.savepub').setAttribute("onclick", "savepro()");
+                }
+            }
+        
+                });
+                }
+        
     </script>
 </body>
 </html>

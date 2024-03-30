@@ -1,4 +1,6 @@
-
+<?php
+ require_once('./gettheimgofuser.php'); 
+?>
 <head>
     <!-- <link rel="stylesheet" href="style2.css"> -->
    
@@ -17,7 +19,7 @@
             <a href="#" class="maina">CONTACT</a>
             <a href="#" class="maina">POLICY</a>
             <a href="publi.php" id="publierbtn">Publier une annonce</a>
-            <img src="./the2pages/profile.png" alt="image" class="profileimg" onclick="profilem()" >
+            <img src="<?php echo $theimgurlp; ?>" alt="image" class="profileimg" onclick="profilem()" >
         </div>
     </main>
     <?php 
@@ -33,7 +35,9 @@
     <div id="ourprofilediv">
         
         <a href="profile.php">Profil</a>
-        <a href="#">Publications</a>
+        <a href="pofileimg.php">Modifier l’image</a>
+        <a href="gestiondpub.php">Publications</a>
+        <a href="saved.php">Annonces enregistrées</a>
         <a href="#">Messages</a>
         <a href='main.php' onclick="desco()" >Deconnexion (  <?php echo $nameC?>)</a>
         

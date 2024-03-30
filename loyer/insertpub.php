@@ -8,10 +8,6 @@ $titel = $_POST["titel"];
 $descr = $_POST["descr"];
 $city = $_POST["city"];
 $addr = $_POST["addr"];
-$meubles = $_POST["meubles"];
-$leau = $_POST["leau"];
-$elec = $_POST["elec"];
-$wifi = $_POST["wifi"];
 $prix = $_POST["prix"];
 $sql0 = "SELECT * FROM  publication order by id DESC LIMIT 1";
 $result0 = $conn->query($sql0);
@@ -25,9 +21,9 @@ if ($result0->num_rows > 0) {
 }
 
 
-$sql1 = "insert into publication (id,title,descr,ville,adrs,meubles,leau,elec,wifi,prix,idc) values ($lastpubid,'$titel','$descr','$city','$addr','$meubles','$leau','$elec','$wifi',$prix,$id)";
+$sql1 = "insert into publication (id,title,descr,ville,adrs,prix,idc) values ($lastpubid,'$titel','$descr','$city','$addr',$prix,$id)";
 if ($conn->query($sql1) === TRUE) {
-    echo "New publication created successfully";
+    header('location:main.php');
   } else {
     echo "Error: " . $sql1. "<br>" . $conn->error;
   }
