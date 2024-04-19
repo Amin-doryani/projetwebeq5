@@ -1,0 +1,11 @@
+.t{
+    width: 100vw;
+    height: max-content;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+}

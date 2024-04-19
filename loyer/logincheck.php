@@ -9,8 +9,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $email = $_POST["email"];
+
 $password = $_POST["password"];
-echo $email;
+
 
 $sql = "SELECT id,password_c FROM client where email_c = '$email' or phone = '$email' ";
 $result = $conn->query($sql);
@@ -22,7 +23,7 @@ if ($result->num_rows > 0) {
 
     $pass = $row["password_c"];
     if ($pass == $password ) {
-        header('location:main.php');
+        header('location:index.php');
 
     } else {
         header('location:loginpage.php');

@@ -93,6 +93,7 @@ form button{
     margin-top: 10px;
     font-weight: 500;
     font-size: 1.2em;
+    border-radius: 5px;
 }
 /* form button:hover{
     background-color: white;

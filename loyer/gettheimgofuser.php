@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION["id_client"])) {
-    header('location:main.php');
+    header('location:index.php');
 }
 $idcl = $_SESSION["id_client"];
 require_once('./conndb.php');

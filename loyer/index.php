@@ -1,29 +1,9 @@
 <?php
 session_start();
-if (!empty($_POST['ville'])) {
-    $thecity = $_POST['ville'];
-}else{
-    $thecity = '';
-}
-if (!empty($_POST['minval'])) {
-   $minprice = $_POST['minval'];
-}else{
-    $minprice = 1;
-}
-if (!empty($_POST['maxval'])) {
-    $maxprice = $_POST['maxval'];
-    
-}else{
-    
-    $maxprice = 1000000;
-    
-}
-
-
 
 
 require_once('./conndb.php');
-$sql = "SELECT id,title,idC,prix,ville FROM publication where ville = '$thecity' and prix > $minprice and prix < $maxprice  limit 12";
+$sql = "SELECT id,title,idC,prix,ville FROM publication limit 12";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -31,41 +11,32 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
+    <title>loyer.ma</title>
     <link rel="stylesheet" href="style/style2.css">
     <style>
     <?php require_once('./the2pages/style2.css'); ?>
     
     
 </style>
+
 </head>
-<body>
-<?php 
+<body>      
+        <?php
         if (isset($_SESSION["id_client"])) {
 
             $theclid = $_SESSION["id_client"];
-            require_once('./pages/tt.php'); 
             
-            
-            
-        
-        }else{
-            require_once('./pages/one.php'); 
-            
-        }
-        ?>
-<div class="resdiv">
-        <form action="search.php" method = 'Post' id="form_id" >
-            <input type="text" name="ville" id="ville" placeholder="ville" required >
-            <input type="number" name="minval" id="minval" placeholder="min prix" required >
-            <input type="number" name="maxval" id="maxval"  placeholder="max prix" required >
-            <a href="#" onclick="document.getElementById('form_id').submit();"></a>
+            require_once('./the2pages/page2.php'); 
             
 
-        </form>
-</div>
-<article id="artt">
-    
+        }else{
+            require_once('./the2pages/page1.php');
+        }
+            
+            
+            
+        ?>
+         <article id="artt">
             <?php 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -99,8 +70,6 @@ $result = $conn->query($sql);
             
                 }
                 
-            }else{
-                echo '<h3 class="Nores">Aucun résultat</h3>';
             }
             ?>
          </article>
@@ -109,15 +78,19 @@ $result = $conn->query($sql);
             
             
          </div>
-         <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" ></script>
+
+         
+            <!-- // crossorigin="anonymous" #this can be add with the src -->
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" ></script>
+         
          <script>
             var ofsetval = 12
             $('#morebtn').click(function () {
                 // var ofsetval = 12;
                 $.ajax({
                     type:"GET",
-                    url : "getmoresearcpub.php",
-                    data : {myvar : ofsetval,myvar1 :'<?php echo $thecity;?>',myvar2 :<?php echo $minprice; ?>,myvar3 :<?php echo $maxprice; ?>},
+                    url : "getmorepub.php",
+                    data : {myvar : ofsetval},
                     dataType : "html",
                     success : function(data){
                         const $artt = $('#artt');
@@ -136,6 +109,8 @@ $result = $conn->query($sql);
         
             });
              }
+            //  const theart = document.getElementById('artc')
          </script>
+         
 </body>
 </html>

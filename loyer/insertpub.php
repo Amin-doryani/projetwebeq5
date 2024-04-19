@@ -23,7 +23,7 @@ if ($result0->num_rows > 0) {
 
 $sql1 = "insert into publication (id,title,descr,ville,adrs,prix,idc) values ($lastpubid,'$titel','$descr','$city','$addr',$prix,$id)";
 if ($conn->query($sql1) === TRUE) {
-    header('location:main.php');
+    header('location:index.php');
   } else {
     echo "Error: " . $sql1. "<br>" . $conn->error;
   }

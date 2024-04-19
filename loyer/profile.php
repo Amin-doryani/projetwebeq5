@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION["id_client"])) {
-    header('location:main.php');
+    header('location:index.php');
 }
 $idc = $_SESSION["id_client"];
 require_once('./conndb.php');
@@ -29,6 +29,21 @@ if ($result->num_rows > 0) {
     <title>Loyer profile</title>
     <link rel="stylesheet" href="./style/profilestyle.css">
     <style>
+    @media (max-width:900px) {
+        .profile{
+            width:80%;
+        }
+}
+@media (max-width:560px) {
+        .profileimg2{
+            width:60px;
+            height: 60px;
+        }
+        .profile div{
+            font-size:0.7em;
+        }
+}
+
     <?php require_once('./the2pages/style2.css'); ?> 
     
     

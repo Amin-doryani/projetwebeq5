@@ -14,6 +14,24 @@ if (isset($_SESSION["id_client"])) {
         <link rel="stylesheet" href="style/chatcss.css">
         <title>loyer</title>
         <style>
+            .filediv label{
+                width:100px;
+                height: 20px;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background-color:#0071BD;
+                color:white;
+                padding:15px 30px;
+                margin:10px 0px;
+                
+            }
+            .fileuplo{
+                display:none;
+                
+
+                
+            }
     <?php require_once('./the2pages/style2.css'); ?>
     
 </style>
@@ -44,14 +62,15 @@ if (isset($_SESSION["id_client"])) {
     
                 <h1> Publier une annonce</h1>
                 <h3>Titre</h3>
-                <input type="text" name="titel" id="titel" class="simpleinput" placeholder="title" form="form1">
+                <input type="text" name="titel" id="titel" class="simpleinput" placeholder="Titre" form="form1" pattern="^[^<>]*$|.*(\s|>|<)[^<>]*">
     
                 <h3>Description</h3>
-                <textarea name="descr" id="descr" cols="30" rows="10" required form="form1"></textarea>
+                <textarea name="descr" id="descr" cols="30" rows="10" required form="form1" pattern="^[^<>]*$|.*(\s|>|<)[^<>]*"></textarea>
                 <br>
                
             <div class="filediv" >
-                    <input type="file" name="image" id="image" form="form2" required onchange="form.submit()" class="fileuplo">
+                    <input type="file" name="image" id="image" form="form2" required onchange="form.submit()" class="fileuplo" id="fileuplo">
+                    <label for="image"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" ><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg></label>
                     
                     <?php 
                         if (isset($_FILES['image'])) {
@@ -101,12 +120,12 @@ if (isset($_SESSION["id_client"])) {
        
                 
                 <h3>Ville</h3>
-                <input type="text" name="city" id="city" class="simpleinput" placeholder="city" form="form1">
+                <input type="text" name="city" id="city" class="simpleinput" placeholder="city" form="form1" pattern="^[^<>]*$|.*(\s|>|<)[^<>]*">
                 <h3> Adresse</h3>
-                <input type="text" name="addr" id="addr" class="simpleinput" onfocus="" placeholder="address" form="form1">
+                <input type="text" name="addr" id="addr" class="simpleinput" onfocus="" placeholder="address" form="form1" pattern="^[^<>]*$|.*(\s|>|<)[^<>]*">
                 
                 <h3>Prix</h3>
-                <input type="number" name="prix" id="prix" class="simpleinput" placeholder="prix(DH)" form="form1" class="rdinput">
+                <input type="number" name="prix" id="prix" class="simpleinput" placeholder="prix(DH)" form="form1" class="rdinput" pattern="^[^<>]*$|.*(\s|>|<)[^<>]*">
                 <br>
                 <button type="submit" class="btnsub" form="form1">Publier</button>
           

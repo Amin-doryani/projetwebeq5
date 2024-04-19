@@ -52,7 +52,39 @@ $row4 = $result4 -> fetch_assoc();
     <link rel="stylesheet" href="./style/style3.css">
     <title></title>
     <style>
+        @media (max-width:1400px) {
+    .main{
+        width: 100vw;
+        height: max-content;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+    .info{
+        width:90%;
+        padding-top:10px;
+        padding-right:10px;
+    }
+    .images{
+        width:90%;
+    }
+    .usercontact{
+        margin-left:5px !important;
+    }
+}
+    @media (max-width:450px){
+        .usercontact{
+            display:none;
+        }
+        .savebtndiv .usercontact{
+            display:block;
+            width:25px;
+            height: 25px;
+        }
+    }
         <?php require_once('./the2pages/style2.css'); ?> 
+        
     </style>
 </head>
 <body>
@@ -111,7 +143,9 @@ $row4 = $result4 -> fetch_assoc();
                 <h3><?php echo $row4["nom"];?></h3>
                 <h3><?php echo $row4["prenom"];?></h3>
                 
-                <a href="#" class="usercontact">Contact</a>
+                <a href="chatbox.php?res=<?php echo  $row4["id"];?>" class="usercontact">Contact</a>
+                
+
                 
                 
             </div>

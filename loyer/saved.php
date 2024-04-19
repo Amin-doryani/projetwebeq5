@@ -2,7 +2,7 @@
 session_start();
 require_once('./conndb.php');
 if (!isset($_SESSION["id_client"])) {
-    header('location:main.php');
+    header('location:index.php');
 }
 $theclid = $_SESSION["id_client"];
 $sql = "SELECT id,title,idC,prix,ville FROM publication where id in(select idp from savep where idc = $theclid )";
@@ -15,6 +15,30 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style4.css">
     <style>
+         @media (max-width:1040px){
+        #artt{
+            width: 90% !important;
+        }
+        
+    }
+    @media (max-width:850px){
+        #artt .thecon{
+            width: 50% !important;
+        }
+        
+    }
+    @media (max-width:650px){
+        #artt .thecon{
+            width: 80% !important;
+        }
+        
+    }
+    @media (max-width:400px){
+        #artt .thecon{
+            width: 95% !important;
+        }
+        
+    }
     <?php require_once('./the2pages/style2.css'); ?>
     
 </style>

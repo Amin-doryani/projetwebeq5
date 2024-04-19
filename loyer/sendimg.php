@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["id_client"])) {
-    header('location:main.php');
+    header('location:index.php');
 }
 $idcl = $_SESSION["id_client"];
 
@@ -15,10 +15,10 @@ $imgsize = $_FILES['upfile']['size'];
 $imgtype = $_FILES['upfile']['type'];
 $imgexp = explode('.', $imgname);
 $newimgext = strtolower(end($imgexp));
-$allowed = array("png","jpg","jpge",'jfif');
+$allowed = array("png","jpg","jpge",'jfif',"jPEG");
 if (in_array($newimgext,$allowed)) {
     if ($imgerror ===  0) {
-        if ($imgsize < 5000000) {
+        if ($imgsize < 50000000) {
             $newimgname = uniqid('',TRUE).".".$newimgext;
             $imglink = "clientimages/".$newimgname;
             

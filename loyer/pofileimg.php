@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (!isset($_SESSION["id_client"])) {
-    header('location:main.php');
+    header('location:index.php');
 }
 require_once('./conndb.php');
 $idcl = $_SESSION["id_client"];
@@ -64,7 +64,18 @@ fileInput.addEventListener('change', function () {
     this.form.submit();
 });
 
+
     
+    </script>
+    <script>
+        function desco(){
+                $.ajax({
+                type: "POST",
+                url: "unset_session.php", 
+                data: { variable_name: "id_client" }
+        
+                });
+                }
     </script>
 
 </body>
