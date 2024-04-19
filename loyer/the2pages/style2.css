@@ -174,5 +174,96 @@ header{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 3em;
 }
+.main22{
+    display:none ;
+    
+}
+.main22divofmain2{
+    display: flex;
+   
+    position: fixed;
+    top:0;
+    right: 0;
+    height: 100vh;
+    width:100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color:white;
+    row-gap:20px;
+    transition: 1ms;
+    padding-left: 20px;
+    padding-top: 20px;
+    
+}
+#publierbtn2{
+    background-color: #0071BD;
+    
+    width: max-content;
+    padding: 2px 20px 2px 20px;
+    color: white;
+    
+}
+.pofthemainofachraf{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1em;
+}
+.main22divofmain2 a{
+    text-decoration: none;
+    color: black;
+}
+.themenuimgformainafterlogin{
+    width: 50px;
+}
+.thecloseimgformainafterlogin{
+    width: 50px;
+}
+.newainform{
+    display: none;
+}
+
+@media (max-width:1142px) {
+    main{
+        display: none;
+    }
+    .main22{
+        display: flex;
+    }
+    .main22divofmain2{
+        display: none;
+    }
+
+}
+@media (max-width:800px){
+    .resdiv{
+        height: max-content;
 
 
+    }
+    .resdiv form{
+        flex-direction: column;
+        row-gap:20px;
+        padding:50px;
+    }
+    .oldainform{
+        display:none;
+    }
+    .newainform{
+        display:block;
+        width: max-content !important;
+        background-image: none !important;
+        color:black;
+        text-decoration: none;
+        background-color:white !important;
+        text-align: center;
+        height: max-content !important;
+        padding: 10px 15px !important;
+        
+    }
+    .hederh1{
+        width:80%;
+    }
+    
+}
