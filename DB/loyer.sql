@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 30 mars 2024 à 18:44
+-- Généré le : ven. 19 avr. 2024 à 15:39
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -42,10 +42,10 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `nom`, `prenom`, `email_c`, `phone`, `ville`, `password_c`) VALUES
-(2, 'ayman', 'ayman', 'ayman@gmail.com', '612345678', 'fes', 'ayman123'),
-(3, 'ziko', 'therawi', 'achraf@gmail.com', '612121212', 'fes', 'achraf'),
-(4, 'hakimi', 'achraf', 'user@loyer.ma', '1840883', 'fes', 'admin'),
-(8, 'achraf', 'rif', 'achrafrif@gmail.com', '40405050', 'fes', 'achrafrif');
+(2, 'user3', 'user3', 'user3@loyer.ma', '612345678', 'fes', 'admin'),
+(3, 'user2', 'user2', 'user2@loyer.ma', 'admin', 'fes', 'admin'),
+(4, 'user1', 'user1', 'user@loyer.ma', '1840883', 'fes', 'admin'),
+(8, 'user4', 'user4', 'user4@loyer.ma', '40405050', 'fes', 'admin');
 
 --
 -- Déclencheurs `client`
@@ -75,10 +75,10 @@ CREATE TABLE `clientimg` (
 --
 
 INSERT INTO `clientimg` (`id`, `idc`, `url`) VALUES
-(1, 4, ' clientimages/66017acd589318.95610676.jpg'),
-(8, 8, 'clientimages/profile.png'),
-(9, 3, 'clientimages/profile.png'),
-(10, 2, ' clientimages/66006cebc82641.15880800.jfif');
+(1, 4, ' clientimages/6621936bb63a44.69946272.jpg'),
+(8, 8, ' clientimages/6621933a5fd196.52325584.jpg'),
+(9, 3, ' clientimages/662193a987f0a7.60625278.jpg'),
+(10, 2, ' clientimages/66219389609ec5.68486351.jpg');
 
 -- --------------------------------------------------------
 
@@ -116,16 +116,7 @@ INSERT INTO `img` (`id`, `id_p`, `url`) VALUES
 (39, 11, 'pubimages/65d1140bb21fb8.60333903.jfif'),
 (40, 12, 'pubimages/65d11441a3e228.18023923.jfif'),
 (44, 16, 'pubimages/65da22d64e5fb6.96662785.png'),
-(66, 13, 'pubimages/660844ba2660e4.68851347.jpg'),
-(67, 13, 'pubimages/660844bdb0faf6.08825197.jpg'),
-(68, 13, 'pubimages/660844c6274a11.53240428.jfif'),
-(69, 13, 'pubimages/660844caa0ddd0.01365554.jpg'),
-(70, 13, 'pubimages/660844ce08f471.71150445.jpg'),
-(71, 13, 'pubimages/660844d27e2168.12990424.jfif'),
-(72, 13, 'pubimages/660844d6df1186.56855735.jfif'),
-(73, 13, 'pubimages/660844dc79fa22.52318157.jfif'),
-(74, 13, 'pubimages/660844e7ef11c8.20182631.jpg'),
-(75, 13, 'pubimages/660844f6b89f33.88489435.jfif');
+(79, 13, 'pubimages/6613d4c5efc1d3.82621822.jpg');
 
 -- --------------------------------------------------------
 
@@ -170,7 +161,7 @@ INSERT INTO `publication` (`id`, `title`, `descr`, `ville`, `adrs`, `prix`, `idc
 (10, 'sidi momen', 'this is the 10th pub', 'fes', 'fes 1000 tanger', 3000, 2),
 (11, 'our 11 pub', 'this is the 11th pub', 'tanger', 'tanger hay lala zehra', 7200, 2),
 (12, '12 pub', 'our 12 pubb', 'fes', 'fes', 14000, 2),
-(13, 'Al hoceima 12 kalabonita', 'orem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quasi sint fuga tenetur, deleniti modi aperiam eos', 'al hoceima', 'al hoceima 12 kalabonita', 3500, 4);
+(13, 't1', 't1', 'fes', 'fes', 12000, 4);
 
 -- --------------------------------------------------------
 
@@ -189,7 +180,12 @@ CREATE TABLE `savep` (
 --
 
 INSERT INTO `savep` (`id`, `idc`, `idp`) VALUES
-(41, 4, 17);
+(107, 4, 9),
+(108, 4, 2),
+(113, 4, 1),
+(114, 4, 10),
+(116, 4, 3),
+(119, 3, 4);
 
 --
 -- Index pour les tables déchargées
@@ -239,7 +235,7 @@ ALTER TABLE `savep`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT pour la table `clientimg`
@@ -251,13 +247,13 @@ ALTER TABLE `clientimg`
 -- AUTO_INCREMENT pour la table `img`
 --
 ALTER TABLE `img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT pour la table `publication`
@@ -269,7 +265,7 @@ ALTER TABLE `publication`
 -- AUTO_INCREMENT pour la table `savep`
 --
 ALTER TABLE `savep`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
