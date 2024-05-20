@@ -1,11 +1,13 @@
 body{
-    pad: 0px;
+    padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-    display: flex;
+    /* display: flex; */
+    
     justify-content: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-     background-color:rgb(237 239 245) ;
+     background-color:white ;
+     height: 100vh;
 }
 .ourform{
  
@@ -91,4 +93,13 @@ h1{
 .rdinput{
     background-color: #0071BD;
     color: #0071BD;
+}
+.divcom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(237 239 245);
+    gap: 20px;
+    padding: 30px;
 }

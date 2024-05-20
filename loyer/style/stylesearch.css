@@ -1,0 +1,100 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+}
+section{
+    height: 80%;
+    display: flex;
+    
+    justify-content: center;
+    
+   
+    padding: 3px;
+    
+}
+.thesearchdiv{
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    row-gap: 10px;
+    border: 1px solid black;
+    padding: 10px 10px;
+    
+}
+.dv1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.dv1 button{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dv1 input{
+    height: 40px;
+    width: 300px;
+    padding: 10px;
+}
+
+.dv2{
+    width: 100%;
+    
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: auto;
+}
+.dv2::-webkit-scrollbar{
+    width: 0px;
+}
+.dv2 .user{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(183, 177, 177);
+    margin-bottom: 10px;
+    
+    
+}
+.user .dvuserimg{
+    width: 60px;
+    height: 60px;
+    
+}
+.user .userinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60px;
+    width: 90%;
+    
+    padding: 3px 0px;
+}
+.userinfo h4{
+    color: rgb(90, 88, 88);
+}
+.dv2 .user .userimg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.backicon{
+    width:30px;
+    height: 30px;
+}
+.backdivicon{
+    width: 100%;
+   padding-left: 10px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+}

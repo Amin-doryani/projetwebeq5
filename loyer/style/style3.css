@@ -6,6 +6,7 @@
 body{
     height: 100vh;
     width: 100vw;
+    
 }
 .main{
     width: 100vw;
@@ -150,3 +151,31 @@ body{
     
    
 }
+.savebtndiv{
+    width: 100%;
+    display: flex;
+     
+    padding: 5px;
+    justify-content: end;
+    
+}
+.savepub{
+    background-color: rgb(244, 244, 244);
+    border: 0px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.stars{
+    width: 40px;
+    height: 40px;
+    transition: 1s;
+}
+.savepub:hover{
+    transform: scale(1.1);
+    background-color: rgb(244, 244, 244);
+}
+
